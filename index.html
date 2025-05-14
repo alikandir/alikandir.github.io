@@ -4,242 +4,316 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Kandır - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-bg: #0a162c;
+            --secondary-bg: #101d36;
+            --accent-color: #ff6b6b;
+            --text-color: #ffffff;
+            --secondary-text: #e2e8f0;
+            --button-bg: #ff6b6b;
+            --button-hover: #ff8585;
+        }
+        
         body {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: rgb(10, 22, 44); /* Set the background color for the entire page */
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
         header {
-            background-color: #000000;
-            color: salmon;
-            text-shadow: 0px 3px 3px  rgb(194, 31, 31); 
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
             text-align: center;
-            padding: 1em;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            height: 400px; /* Increased from 300px to 400px for better banner display */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .banner-image {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 0;
+            width: 100%;
+            height: auto; /* Let height adjust based on aspect ratio */
+            transform: translateY(-50%); /* Center the image vertically */
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        .banner-content {
+            position: absolute;
+            z-index: 2;
+            bottom: 40px;
+            right: 40px;
+            text-align: right;
+            background-color: transparent; /* No background */
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow for contrast */
+            letter-spacing: 1px; /* Slightly spaced letters */
+        }
+        
+        header h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin: 5px 0 0;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.5px;
         }
 
         section {
-            background-color: rgb(10, 22, 44);
-            color: burlywood;
-            padding: 20px;
-            text-align: center;
+            padding: 40px 20px;
         }
 
-
-        iframe {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .gif-title {
-            position: relative;
-            top: 50%; /* Adjust as needed to vertically center the title */
-            left: 50%; /* Adjust as needed to horizontally center the title */
-            transform: translate(-50%, -10%);
-            color: l;
-            font-size: 26px;
-            font-weight: bold;
-            text-shadow: 0px 2px 1px rgb(206, 76, 98); /* Optional text shadow for better visibility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .about-me {
-            background-color: rgb(10, 22, 44); /* Change the background color as needed */
-            color: honeydew;
-            text-shadow: 0px 1px 1px rgb(236, 26, 26);
-            line-height: 1.5;
-            padding: 20px;
-            text-align: center;
-            margin-top: 0px; /* Add margin to separate it from the games section */
-            max-width: 600px; /* Set the maximum width for the container */
-            margin-left: auto;
-            margin-right: auto;
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-me h2 {
+            color: var(--accent-color);
+            margin-top: 0;
         }
 
-        .demo-container {
-            max-width: 560px;
-            margin: 0 auto;
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin: 0;
+            padding: 15px 15px 5px;
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
         .game-description {
-            color: honeydew;
-            text-shadow: 0px 1px 1px rgb(238, 92, 92);
-            padding: 5px;
-            line-height: 1.5;
-            text-align: center;
-            margin-top: 0px; /* Add margin to separate it from the games section */
-            max-width: 600px; /* Set the maximum width for the container */
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--secondary-text);
+            padding: 0 15px 15px;
+            font-size: 0.95rem;
         }
+        
+        .game-description p {
+            margin: 10px 0;
+        }
+        
+        .engine-tag {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .game-links {
+            display: flex;
+            gap: 10px;
+            padding: 0 15px 15px;
+        }
+
         .game-link {
             display: inline-block;
-            margin-top: 10px;
+            background-color: var(--button-bg);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        
+        .game-link:hover {
+            background-color: var(--button-hover);
+        }
+        
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Ali Kandır</h1>
-        <h2>Game Developer</h2>
+        <img class="banner-image" src="https://i.ibb.co/ZpTBrpqh/Screenshot-2025-05-14-151257.png" alt="Game Development Banner">
+        <div class="banner-content">
+            <h1>Ali Kandır</h1>
+            <h2>Game Developer</h2>
+        </div>
     </header>
-     <!-- New section for About Me -->
-    <section class="about-me">
-        <h2>About Me:</h2>
-        <p>Hello! I am a former biologist who discovered their passion for game development. These are the games I've worked on so far!</p>
-    </section>
+    
     <section>
-        <div class="gif-title"> HueRo </div>
-        
-        <br>
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjBpbWN6b3d4aXhlcW1ndXk5ajFvamlkaHcyYWc3d3lwbDNjMDYxbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WgHIR0bTkJrWkoUtuk/giphy.gif" alt="Game Demo">
-        <br>
-        <div class="game-description">
-            <p>Made it solo under 24 hours for Winter is Jamming event. A hue shifting platformer. </p>
-            <p>Made in Godot</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-        <div class="game-link">
-            <a href="https://roguelime.itch.io/huero" target="_blank">Play on Itch.io</a>
-        </div>
-        <br>
-        <br>
-
-        <div class="gif-title"> Overgrown (Term Project) </div>
-        
-        <br>
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTI1MTVvMXIwcGUxZHhkajAzeDhydWM0N2dmdnk1anZyYTF5MWFteiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zCGaGiZVefnlGhFStz/giphy.gif" alt="Game Demo">
-        <br>
-        <div class="game-description">
-            <p>This is a term project we did as a group for the Game Design and Development Course in Metu. Play as a lovecraftian character, grow plants and sell them. Be careful, don't let them grow too much.</p>
-            <p>Made in Unity</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-        <div class="game-link">
-            <a href="https://osmangelmez.itch.io/overgrown" target="_blank">Play on Itch.io</a>
-        </div>
-        <br>
-        <br>
-
-
-        <div class="gif-title"> A Dance of Destruction (GMTK 2024 Entry) </div>
-        
-        <br>
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2R3eDd6YXd1NW41d3VtYWFwcHc2NnYydXd3ajR2b2hxdzBxeXFtYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o7AKcKt2hO1G23BU9f/giphy.gif" alt="Game Demo">
-        <br>
-        <div class="game-description">
-            <p>This is our entry for the GMTK Jam. Play as a blackhole, that eats other planets that disturb your love, "the Earth".</p>
-            <p>Made in Unity</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-        <div class="game-link">
-            <a href="https://roguelime.itch.io/a-dance-of-destruction" target="_blank">Play on Itch.io</a>
-        </div>
-        <br>
-        <br>
-
-
-        <div class="gif-title"> Melting Point </div>
-        
-        <br>
-        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb200Y3pkbjcxZngwc2NpaW1qNGJhYzNpaGFjYm40anh6NXAxZ29zdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TkVgwcg44oxtuPHKeE/giphy.gif" alt="Game Demo">
-        <br>
-        <div class="game-description">
-            <p>Made for GodotWildJam 66. It's a cute little puzzle game that I made with my girlfriend. </p>
-            <p>Made in Godot</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-        <div class="game-link">
-            <a href="https://roguelime.itch.io/melting-point" target="_blank">Play on Itch.io</a>
-        </div>
-        <br>
-        <br>
-
-
-
-        <div class="gif-title"> Cash Out / Jam Game </div>
-        
-        <br>
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHJnYTVyNjB3dXp2dmlseW5ha2gxaHdlMHB6a2V2dWY1anQxODUweiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fmZt0QcJdckvCwRBSX/giphy.gif" alt="Game Demo">
-        <br>
-        <div class="game-description">
-            <p>This is a jam game and we worked two people on the programming. I made the intro cut scene, added new attacks and flavor text.</p>
-            <p>Made in Godot</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-        <div class="game-link">
-            <a href="https://nooarth.itch.io/total-cost" target="_blank">Play on Itch.io</a>
-        </div>
-        <br>
-        <br>
-        
-        <div class="gif-title"> Voyager </div>
-        
-        <br>
-        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3VqZDV3bjB1OXk0bG1ld3RwbW90OWRyZTgwMXFxdXdrZTV5c2JwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ei0OpiGfKRLUMzHCsn/giphy.gif" alt="Game Demo">
-        <br>
-        <div class="game-description">
-            <p>For this game I made everything from scratch from drawings to the code. I drew several enemy ships and implemented different behaviours for them. Made a level up system and added incremental difficulty.</p>
-            <p>Made in Godot</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-        <div class="game-link">
-            <a href="https://github.com/alikandir/VoyagerSpaceShooter" target="_blank">GitHub</a>
-        </div>
-        <br>
-        <div class="game-link">
-            <a href="https://roguelime.itch.io/voyager" target="_blank">Play on Itch.io</a>
-        </div>
-
-        <br>
-        <br>
-        
-        <div class="gif-title"> Lunar Miner </div>
-        
-        <br>
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2RjM21mbDRicTZ2bGFteWp4MXl4NHV2cDNjcDg1enNoaGlibGlueSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Us5CNT89ouaRSouFcv/giphy.gif" alt="Game Demo">
-        <br>
-
-        <div class="game-description">
-            <p>The first game I added some new mechanics without a tutorial. It's a survival game on space where your oxygen bar is running low.
-                You have to collect oxygen tanks while avoiding or killing the enemies and survive until your drilling mission is completed.
-            </p>
-            <p>Made in Unity</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-        <div class="game-link">
-            <a href="https://github.com/alikandir/LUNA" target="_blank">GitHub</a>
-        </div>
-        <br>
-        <div class="game-link">
-            <a href="https://roguelime.itch.io/lunar-miner" target="_blank">Play on Itch.io</a>
-        </div>
-
-        <br>
-        <br>
-        
-        <div class="gif-title"> Stardew Trivia </div>
-        
-        <br>
-        <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXRqMjVmazVhYXNha250OHRoc201b3l4M3U3a3JhaGQ1ZGltZjcyNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ih2vHKIABkOEB7dXvH/giphy.gif" alt="Game Demo">
-        <br>
-
-        <div class="game-description">
-            <p>It's a simple trivia quiz game about Stardew Valley. I've learned a lot about Unity UI elements and handling music in Unity.
-            </p>
-            <p>Made in Unity</p>
-        </div>
-        <!-- Links to GitHub and itch.io -->
-
-        <div class="game-link">
-            <a href="https://github.com/alikandir/Stardew-Trivia" target="_blank">GitHub</a>
-        </div>
-        <br>
-        <div class="game-link">
-            <a href="https://roguelime.itch.io/stardew-trivia" target="_blank">Play on Itch.io</a>
+        <div class="container">
+            <!-- About Me Section -->
+            <div class="about-me">
+                <h2>About Me</h2>
+                <p>Hello! I am a former biologist who discovered their passion for game development. These are the games I've worked on so far!</p>
+            </div>
+            
+            <!-- Games Grid -->
+            <div class="games-grid">
+                <!-- Game 1: HueRo -->
+                <div class="game-card">
+                    <h3 class="game-title">HueRo</h3>
+                    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbjBpbWN6b3d4aXhlcW1ndXk5ajFvamlkaHcyYWc3d3lwbDNjMDYxbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WgHIR0bTkJrWkoUtuk/giphy.gif" alt="HueRo Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Godot</span>
+                        <p>Made it solo under 24 hours for Winter is Jamming event. A hue shifting platformer.</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://roguelime.itch.io/huero" target="_blank" class="game-link">Play on Itch.io</a>
+                    </div>
+                </div>
+                
+                <!-- Game 2: Overgrown -->
+                <div class="game-card">
+                    <h3 class="game-title">Overgrown</h3>
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTI1MTVvMXIwcGUxZHhkajAzeDhydWM0N2dmdnk1anZyYTF5MWFteiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/zCGaGiZVefnlGhFStz/giphy.gif" alt="Overgrown Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Unity</span>
+                        <p>This is a term project we did as a group for the Game Design and Development Course in Metu. Play as a lovecraftian character, grow plants and sell them.</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://osmangelmez.itch.io/overgrown" target="_blank" class="game-link">Play on Itch.io</a>
+                    </div>
+                </div>
+                
+                <!-- Game 3: A Dance of Destruction -->
+                <div class="game-card">
+                    <h3 class="game-title">A Dance of Destruction</h3>
+                    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2R3eDd6YXd1NW41d3VtYWFwcHc2NnYydXd3ajR2b2hxdzBxeXFtYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/o7AKcKt2hO1G23BU9f/giphy.gif" alt="A Dance of Destruction Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Unity</span>
+                        <p>This is our entry for the GMTK Jam. Play as a blackhole, that eats other planets that disturb your love, "the Earth".</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://roguelime.itch.io/a-dance-of-destruction" target="_blank" class="game-link">Play on Itch.io</a>
+                    </div>
+                </div>
+                
+                <!-- Game 4: Melting Point -->
+                <div class="game-card">
+                    <h3 class="game-title">Melting Point</h3>
+                    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExb200Y3pkbjcxZngwc2NpaW1qNGJhYzNpaGFjYm40anh6NXAxZ29zdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TkVgwcg44oxtuPHKeE/giphy.gif" alt="Melting Point Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Godot</span>
+                        <p>Made for GodotWildJam 66. It's a cute little puzzle game that I made with my girlfriend.</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://roguelime.itch.io/melting-point" target="_blank" class="game-link">Play on Itch.io</a>
+                    </div>
+                </div>
+                
+                <!-- Game 5: Cash Out -->
+                <div class="game-card">
+                    <h3 class="game-title">Cash Out</h3>
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHJnYTVyNjB3dXp2dmlseW5ha2gxaHdlMHB6a2V2dWY1anQxODUweiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fmZt0QcJdckvCwRBSX/giphy.gif" alt="Cash Out Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Godot</span>
+                        <p>This is a jam game and we worked two people on the programming. I made the intro cut scene, added new attacks and flavor text.</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://nooarth.itch.io/total-cost" target="_blank" class="game-link">Play on Itch.io</a>
+                    </div>
+                </div>
+                
+                <!-- Game 6: Voyager -->
+                <div class="game-card">
+                    <h3 class="game-title">Voyager</h3>
+                    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3VqZDV3bjB1OXk0bG1ld3RwbW90OWRyZTgwMXFxdXdrZTV5c2JwZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ei0OpiGfKRLUMzHCsn/giphy.gif" alt="Voyager Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Godot</span>
+                        <p>For this game I made everything from scratch from drawings to the code. I drew several enemy ships and implemented different behaviours for them.</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://roguelime.itch.io/voyager" target="_blank" class="game-link">Play on Itch.io</a>
+                        <a href="https://github.com/alikandir/VoyagerSpaceShooter" target="_blank" class="game-link">GitHub</a>
+                    </div>
+                </div>
+                
+                <!-- Game 7: Lunar Miner -->
+                <div class="game-card">
+                    <h3 class="game-title">Lunar Miner</h3>
+                    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2RjM21mbDRicTZ2bGFteWp4MXl4NHV2cDNjcDg1enNoaGlibGlueSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Us5CNT89ouaRSouFcv/giphy.gif" alt="Lunar Miner Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Unity</span>
+                        <p>The first game I added some new mechanics without a tutorial. It's a survival game on space where your oxygen bar is running low.</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://roguelime.itch.io/lunar-miner" target="_blank" class="game-link">Play on Itch.io</a>
+                        <a href="https://github.com/alikandir/LUNA" target="_blank" class="game-link">GitHub</a>
+                    </div>
+                </div>
+                
+                <!-- Game 8: Stardew Trivia -->
+                <div class="game-card">
+                    <h3 class="game-title">Stardew Trivia</h3>
+                    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXRqMjVmazVhYXNha250OHRoc201b3l4M3U3a3JhaGQ1ZGltZjcyNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ih2vHKIABkOEB7dXvH/giphy.gif" alt="Stardew Trivia Game Demo">
+                    <div class="game-description">
+                        <span class="engine-tag">Unity</span>
+                        <p>It's a simple trivia quiz game about Stardew Valley. I've learned a lot about Unity UI elements and handling music in Unity.</p>
+                    </div>
+                    <div class="game-links">
+                        <a href="https://roguelime.itch.io/stardew-trivia" target="_blank" class="game-link">Play on Itch.io</a>
+                        <a href="https://github.com/alikandir/Stardew-Trivia" target="_blank" class="game-link">GitHub</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
