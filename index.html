@@ -102,6 +102,25 @@
             margin-top: 0;
         }
 
+        .about-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -203,6 +222,8 @@
             <div class="about-me">
                 <h2>About Me</h2>
                 <p>Hello! I am a former biologist who discovered their passion for game development. These are the games I've worked on so far!</p>
+                <p>I am working on a 2D idler side project game with my girlfriend.</p>
+                <a href="https://linktr.ee/roguelimegames" target="_blank" class="about-button">Check Out Our Game</a>
             </div>
             
             <!-- Games Grid -->
@@ -337,3 +358,4 @@
 
 </body>
 </html>
+```
