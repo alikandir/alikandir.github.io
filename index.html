@@ -102,6 +102,13 @@
             margin-top: 0;
         }
 
+        .about-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
         .about-button {
             display: inline-block;
             background-color: var(--button-bg);
@@ -110,11 +117,20 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 15px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
+        .cv-button {
+            background-color: #4a6fa5; /* Different color to distinguish it */
+        }
+        
+        .cv-button:hover {
+            background-color: #5d84be; /* Lighter hover state */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
         .about-button:hover {
             background-color: var(--button-hover);
             transform: translateY(-2px);
@@ -223,7 +239,10 @@
                 <h2>About Me</h2>
                 <p>Hello! I am a former biologist who discovered their passion for game development. These are the games I've worked on so far!</p>
                 <p>I am working on a 2D idler side project game with my girlfriend.</p>
-                <a href="https://linktr.ee/roguelimegames" target="_blank" class="about-button">Check Out Our Game</a>
+                <div class="about-buttons">
+                    <a href="https://linktr.ee/roguelimegames" target="_blank" class="about-button">Check Out Our Game</a>
+                    <a href="./AliKandirResume.pdf" download class="about-button cv-button">Download My CV</a>
+                </div>
             </div>
             
             <!-- Games Grid -->
@@ -358,4 +377,3 @@
 
 </body>
 </html>
-```
